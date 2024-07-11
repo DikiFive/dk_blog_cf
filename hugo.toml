@@ -1,5 +1,5 @@
 # 基础URL，用于生成页面链接，设置为您网站的URL
-baseURL = "https://https://dk-blog-cf.pages.dev"
+baseURL = "https://dk-blog-cf.pages.dev"
 
 # 使用的主题名称
 theme = 'hugo-bearblog'
