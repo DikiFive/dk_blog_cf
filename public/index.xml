@@ -6,14 +6,27 @@
     <description>Recent content on DikiFive&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>Copyright © 2020, Jane Doe.</copyright>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2024 21:48:05 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>http://localhost:1313/posts/first/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/first/</guid>
+      <title>test</title>
+      <link>http://localhost:1313/post/test/</link>
+      <pubDate>Thu, 11 Jul 2024 21:30:24 +0800</pubDate>
+      <guid>http://localhost:1313/post/test/</guid>
+      <description>1233</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/readme/</link>
+      <pubDate>Thu, 11 Jul 2024 21:12:24 +0800</pubDate>
+      <guid>http://localhost:1313/readme/</guid>
+      <description>简单分享 个人博客技术分享 联系方式：bilibili </description>
+    </item>
+    <item>
+      <title>测试</title>
+      <link>http://localhost:1313/post/first/</link>
+      <pubDate>Thu, 11 Jul 2024 21:12:24 +0800</pubDate>
+      <guid>http://localhost:1313/post/first/</guid>
       <description>666</description>
     </item>
   </channel>

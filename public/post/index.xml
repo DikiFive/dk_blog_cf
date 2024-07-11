@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>文章 on DikiFive&#39;s Blog</title>
+    <title>Posts on DikiFive&#39;s Blog</title>
     <link>http://localhost:1313/post/</link>
-    <description>Recent content in 文章 on DikiFive&#39;s Blog</description>
+    <description>Recent content in Posts on DikiFive&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>Copyright © 2020, Jane Doe.</copyright>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2024 21:48:05 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
+      <title>test</title>
+      <link>http://localhost:1313/post/test/</link>
+      <pubDate>Thu, 11 Jul 2024 21:30:24 +0800</pubDate>
+      <guid>http://localhost:1313/post/test/</guid>
+      <description>1233</description>
+    </item>
+    <item>
+      <title>测试</title>
       <link>http://localhost:1313/post/first/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 11 Jul 2024 21:12:24 +0800</pubDate>
       <guid>http://localhost:1313/post/first/</guid>
       <description>666</description>
     </item>

@@ -2,14 +2,17 @@
 baseURL = "https://dk-blog-cf.pages.dev"
 
 # 使用的主题名称
-theme = 'hugo-bearblog'
+theme = 'github-style'
 
 # 博客的基础元数据配置
 title = "DikiFive's Blog"
 author = "DikiFive"
 
-# 版权信息
-copyright = "Copyright © 2020, Jane Doe."
+# 是否使用pygments来高亮代码块
+pygmentsCodeFences = true
+
+# 是否使用类名来区分代码块的语法
+pygmentsUseClasses = true
 
 # 网站使用的语言代码
 languageCode = "zh-cn"
@@ -17,27 +20,66 @@ languageCode = "zh-cn"
 # 是否生成robots.txt以优化SEO
 enableRobotsTXT = true
 
-# 禁用某些页面类型的生成，例如分类页面
-disableKinds = ["taxonomy"]
-# 忽略禁用taxonomy时产生的错误
-ignoreErrors = ["error-disable-taxonomy"]
-
-# 定义不同页面类型的永久链接格式
-[permalinks]
-  blog = "/:slug/"
-  tags = "/blog/:slug"
-
 [params]
-  # 网站的描述，用于HTML的元数据
-  description = "DKFV"
-  # 网站图标的路径，应该是至少32px x 32px的正方形png文件
-  favicon = "images/favicon.png"
-  # 用于结构化数据模板的图片，显示在Twitter或Slack等平台的链接预览中
-  images = ["images/share.png"]
+# 网站的作者
+author = "DikiFive"
+# 网站的描述
+description = "独自学习。"
+# 作者的GitHub用户名
+github = "DikiFive"
+# 作者的电子邮箱
+email = "dikifivecn@gmail.com"
+# 网站的URL
+url = "https://dikifive.github.io"
+# 网站的关键词
+keywords = "blog"
+# 是否启用RSS
+rss = false
+# 是否显示文章最后修改时间
+lastmod = true
+# 用户状态的Emoji
+userStatusEmoji = "😈"
+# 网站的favicon图标
+favicon = "/images/github-mark-white.png"
+# 网站的头像
+avatar = "/images/head.png"
+# 网站的头部图标
+headerIcon = "/images/hat.png"
+# 作者的地理位置
+location = "China"
+# # 是否启用Gitalk评论系统
+# enableGitalk = true
 
-  # 在Hugo的Open Graph结构化数据模板中使用的站点名称
-  title = "DikiFive"
-  # 主题默认在页面底部显示制作信息，可以关闭但建议保留
-  hideMadeWithLine = true
-  # 自定义日期显示格式，使用Hugo的Format函数文档中的格式
-  # dateFormat = "2006-01-02"
+# [params.gitalk]
+# # Gitalk评论系统的client ID
+# clientID = "Your client ID"
+# # Gitalk评论系统的client secret
+# clientSecret = "Your client secret"
+# # 存放评论的仓库名
+# repo = "repo"
+# # 仓库的所有者
+# owner = "MeiK2333"
+# # 有权限管理评论的管理员
+# admin = "MeiK2333"
+# # 评论的id，通常是页面的路径
+# id = "location.pathname"
+# # 评论的标签
+# labels = "gitalk"
+# # 每页显示的评论数量
+# perPage = 15
+# # 分页时，是显示“最新”还是“最旧”
+# pagerDirection = "last"
+# # 是否允许手动创建issue
+# createIssueManually = true
+# # 是否开启无干扰模式
+# distractionFreeMode = false
+
+# [[params.links]]
+# # 友情链接的标题
+# title = "Link"
+# # 友情链接的URL
+# href = "https://github.com/meik2333"
+
+[frontmatter]
+# frontmatter中可以指定文章最后修改时间的来源
+lastmod = ["lastmod", ":fileModTime", ":default"]
