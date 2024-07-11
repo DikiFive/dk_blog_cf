@@ -5,7 +5,7 @@ baseURL = "https://dk-blog-cf.pages.dev"
 theme = 'hugo-bearblog'
 
 # 博客的基础元数据配置
-title = "dikifive's Blog"
+title = "DikiFive's Blog"
 author = "DikiFive"
 
 # 版权信息
