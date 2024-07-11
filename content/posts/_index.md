@@ -1,4 +1,4 @@
 +++
-title = "post"
-menu = "main"
+title = '文章'
+menu = 'main'
 +++
