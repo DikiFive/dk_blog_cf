@@ -1,0 +1,4 @@
++++
+title = "post"
+menu = "main"
++++
