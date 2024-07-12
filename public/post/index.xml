@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on DikiFive&#39;s Blog</title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://dikifive.github.io/post/</link>
     <description>Recent content in Posts on DikiFive&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Jul 2024 11:13:02 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jul 2024 11:40:36 +0800</lastBuildDate>
+    <atom:link href="https://dikifive.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>小白从零开始创建个人博客——使用hugo部署到GitHub Pages</title>
-      <link>http://localhost:1313/post/hugo/</link>
+      <link>https://dikifive.github.io/post/hugo/</link>
       <pubDate>Fri, 12 Jul 2024 11:07:40 +0800</pubDate>
-      <guid>http://localhost:1313/post/hugo/</guid>
+      <guid>https://dikifive.github.io/post/hugo/</guid>
       <description>部署教程</description>
     </item>
   </channel>
