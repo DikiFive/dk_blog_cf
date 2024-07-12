@@ -1,104 +1,55 @@
-# 网站的基础URL
 baseURL = "https://meik2333.com/"
-
-# 网站使用的语言代码
 languageCode = "zh-cn"
-
-# 网站的标题
 title = "MeiK's blog"
-
-# 使用的主题
 theme = "github-style"
-
-# 是否使用pygments来高亮代码块
 pygmentsCodeFences = true
-
-# 是否使用类名来区分代码块的语法
 pygmentsUseClasses = true
 
 [params]
-  # 网站的作者
   author = "MeiK"
-  # 网站的描述
-  description = "在孤独中，我们并不孤单。"
-  # 作者的GitHub用户名
+  description = "In solitude, where we are least alone."
   github = "MeiK2333"
-  # 作者的Facebook用户名
   facebook = "MeiK2333"
-  # 作者的Twitter用户名
   twitter = "MeiK2333"
-  # 作者的LinkedIn用户名
   linkedin = "MeiK2333"
-  # 作者的Instagram用户名
   instagram = "MeiK2333"
-  # 作者的Tumblr用户名
   tumblr = "MeiK2333"
-  # 作者的电子邮箱
   email = "meik2333@gmail.com"
-  # 网站的URL
   url = "https://meik2333.com"
-  # 网站的关键词
   keywords = "blog, google analytics"
-  # 是否启用RSS
   rss = true
-  # 是否显示文章最后修改时间
   lastmod = true
-  # 用户状态的Emoji
-  userStatusEmoji = "😀"
-  # 网站的favicon图标
-  favicon = "/images/github.png"
-  # 网站的头像
+  favicon = "/images/github-mark.png"
   avatar = "/images/avatar.png"
-  # 网站的头部图标
-  headerIcon = "/images/GitHub-Mark-Light-32px.png"
-  # 作者的地理位置
+  headerIcon = "/images/github-mark-white.png"
   location = "China"
-  # 是否启用Gitalk评论系统
+  userStatusEmoji = "😀"
   enableGitalk = true
 
   [params.gitalk]
-    # Gitalk评论系统的client ID
-    clientID = "Your client ID"
-    # Gitalk评论系统的client secret
-    clientSecret = "Your client secret"
-    # 存放评论的仓库名
-    repo = "repo"
-    # 仓库的所有者
-    owner = "MeiK2333"
-    # 有权限管理评论的管理员
-    admin = "MeiK2333"
-    # 评论的id，通常是页面的路径
-    id = "location.pathname"
-    # 评论的标签
-    labels = "gitalk"
-    # 每页显示的评论数量
-    perPage = 15
-    # 分页时，是显示“最新”还是“最旧”
-    pagerDirection = "last"
-    # 是否允许手动创建issue
-    createIssueManually = true
-    # 是否开启无干扰模式
-    distractionFreeMode = false
-
+    clientID = "Your client ID" # Your client ID
+    clientSecret = "Your client secret" # Your client secret
+    repo = "LuvSia" # 您的博客的github地址Repository name，例如：xxxx.github.io
+    owner = "ventusoon" # 您的GitHub ID
+    admin = "ventusoon" # 您的GitHub ID
+    id = "location.pathname" # 文章页面的链接地址就是ID
+    labels = "gitalk" # Github issue labels. If you used to use Gitment, you can change it
+    perPage = 15 # Pagination size, with maximum 100.
+    pagerDirection = "last" # Comment sorting direction, available values are 'last' and 'first'.
+    createIssueManually = true # 设置为true，如果是管理员登录，会自动创建issue，如果是false，需要管理员手动添加第一个评论(issue)
+    distractionFreeMode = false # Enable hot key (cmd|ctrl + enter) submit comment.
+    proxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token" # 可以自行添加反向代理
   [[params.links]]
-    # 友情链接的标题
     title = "Link"
-    # 友情链接的URL
     href = "https://github.com/meik2333"
-
   [[params.links]]
-    # 友情链接2的标题
     title = "Link2"
-    # 友情链接2的URL
     href = "https://meik2333.com"
-    # 友情链接2的图标
     icon = "https://meik2333.com/images/avatar.png"
 
 [frontmatter]
-  # frontmatter中可以指定文章最后修改时间的来源
   lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [services]
   [services.googleAnalytics]
-    # Google Analytics的跟踪ID
     ID = "UA-123456-789"
