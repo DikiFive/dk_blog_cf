@@ -47,38 +47,38 @@ avatar = "/images/head.png"
 headerIcon = "/images/hat.png"
 # 作者的地理位置
 location = "China"
-# # 是否启用Gitalk评论系统
-# enableGitalk = true
+# 是否启用Gitalk评论系统
+enableGitalk = true
 
-# [params.gitalk]
-# # Gitalk评论系统的client ID
-# clientID = "Your client ID"
-# # Gitalk评论系统的client secret
-# clientSecret = "Your client secret"
-# # 存放评论的仓库名
-# repo = "repo"
-# # 仓库的所有者
-# owner = "MeiK2333"
-# # 有权限管理评论的管理员
-# admin = "MeiK2333"
-# # 评论的id，通常是页面的路径
-# id = "location.pathname"
-# # 评论的标签
-# labels = "gitalk"
-# # 每页显示的评论数量
-# perPage = 15
-# # 分页时，是显示“最新”还是“最旧”
-# pagerDirection = "last"
-# # 是否允许手动创建issue
-# createIssueManually = true
-# # 是否开启无干扰模式
-# distractionFreeMode = false
+[params.gitalk]
+# Gitalk评论系统的client ID
+clientID = "Ov23lioaIJ1jJW6NehLN"
+# Gitalk评论系统的client secret
+clientSecret = "ff4d5a7e63345dcce5208f051d5b52933bc87355"
+# 存放评论的仓库名
+repo = "DikiFive.github.io"
+# 仓库的所有者
+owner = "DikiFive"
+# 有权限管理评论的管理员
+admin = "DikiFive"
+# 评论的id，通常是页面的路径
+id = "location.pathname"
+# 评论的标签
+labels = "gitalk"
+# 每页显示的评论数量
+perPage = 15
+# 分页时，是显示“最新”还是“最旧”
+pagerDirection = "last"
+# 是否允许手动创建issue
+createIssueManually = true
+# 是否开启无干扰模式
+distractionFreeMode = false
 
-# [[params.links]]
-# # 友情链接的标题
-# title = "Link"
-# # 友情链接的URL
-# href = "https://github.com/meik2333"
+[[params.links]]
+# 友情链接的标题
+title = "主站博客"
+# 友情链接的URL
+href = "https://dikifive.github.io/"
 
 [frontmatter]
 # frontmatter中可以指定文章最后修改时间的来源
