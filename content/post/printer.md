@@ -1,0 +1,483 @@
+---
+title: "Content Placeholder"
+_build:
+  render: never
+  list: never
+  publishResources: false
+---
+
+# 此文件包含BIGTREETECH SKR Pico V1.0的常见引脚映射
+# 使用此配置，固件应为RP2040编译并使用USB通信。
+
+# "make flash"命令在SKR Pico V1.0上不起作用。取而代之的是，
+# 运行"make"后，将生成的"out/klipper.uf2"文件复制到RP2040启动模式的存储设备
+
+## Voron Design VORON 0.2 SKR Pico V1.0配置
+
+## *** 需要更改/检查的项目 ***
+## MCU路径[mcu]部分
+## Z轴和挤出机电机电流[tmc2209 stepper_*]部分。取消注释您拥有的步进电机
+## 挤出机全步每旋转[tmc2209 stepper_*]部分。参见https://www.klipper3d.org/Config_Reference.html#common-thermistors了解常见热敏电阻类型
+## 电机电流[extruder] [stepper]和[_HOME_X/Y]宏部分
+## PID调节[extruder]和[heater_bed]部分
+## 微调E轴步数[extruder]部分
+## 更多信息请访问https://docs.vorondesign.com/build/startup/#v0
+[include fluidd.cfg]
+
+[virtual_sdcard]
+path: /home/orangepi/printer_data/gcodes
+on_error_gcode: CANCEL_PRINT
+
+[mcu]
+#####################################################################
+# 通过"ls -l /dev/serial/by-id/"获取定义
+#####################################################################
+serial: /dev/serial/by-id/usb-Klipper_rp2040_454741505B0B3A5A-if00
+## serial: /dev/ttyAMA0 											# 对于UART连接
+restart_method: command
+
+[temperature_sensor mcu_temp]
+sensor_type: temperature_mcu
+min_temp: 0
+max_temp: 100
+
+[temperature_sensor orange_pi]
+sensor_type: temperature_host
+min_temp: 10
+max_temp: 100
+
+[printer]
+kinematics: corexy
+max_velocity: 300
+max_accel: 10000
+max_z_velocity: 30
+max_z_accel: 300
+square_corner_velocity: 6.0
+
+#####################################################################
+# X/Y轴步进电机设置
+#####################################################################
+
+[stepper_x]
+step_pin: gpio11
+## 参见https://docs.vorondesign.com/build/startup/#v0
+dir_pin: !gpio10                                                     # 在上面的链接中检查电机方向。如果反转，在gpio10前加!
+enable_pin: !gpio12
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200                                        # 对于0.9°步进电机设置为400，对于1.8°步进电机设置为200
+endstop_pin: tmc2209_stepper_x:virtual_endstop
+position_endstop: 120
+position_max: 120
+homing_speed: 40                                                    # 对于无传感器寻道，建议不要超过40mm/s
+homing_retract_dist: 0
+homing_positive_dir: true
+
+[tmc2209 stepper_x]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 0
+interpolate: False
+run_current: 0.8
+# 你需要使用公式(额定电机电流 * 0.707 = 最大运行电流)来计算运行电流值，从最大值的60%-70%开始。
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设置为999999以启用stealthchop，设置为0以使用spreadcycle
+diag_pin: ^gpio4    												# 你需要在你的主板上跳接此DIAG PIN，以便无传感器寻道工作
+driver_SGTHRS: 95												# 这被设置为255，这是无传感器寻道的最大灵敏度，你将需要稍后调整此值
+
+[stepper_y]
+step_pin: gpio6
+## 参见 https://docs.vorondesign.com/build/startup/#v0
+dir_pin: !gpio5                                                      # 检查电机方向，如果反转，在gpio5前加 !
+enable_pin: !gpio7
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200                                        # 设置为400用于0.9°步进电机，200用于1.8°步进电机
+endstop_pin: tmc2209_stepper_y:virtual_endstop
+position_endstop: 118
+position_max: 118
+homing_speed: 40                                                    # 无传感器寻道推荐速度不超过40mm/s
+homing_retract_dist: 0
+homing_positive_dir: true
+
+[tmc2209 stepper_y]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 2
+interpolate: False
+run_current: 0.8
+# 使用公式 (额定电机电流 * 0.707 = 最大运行电流) 计算运行电流值，从最大值的60%-70%开始。
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为999999启用stealthchop，0使用spreadcycle
+diag_pin: ^gpio3    												# 需要在主板上跳接此DIAG PIN以启用无传感器寻道
+driver_SGTHRS: 105												# 设为255，无传感器寻道的最大灵敏度，之后需调整
+
+#####################################################################
+# Z轴步进电机设置
+#####################################################################
+
+[stepper_z]
+step_pin: gpio19
+dir_pin: !gpio28                                                    # 如果电机方向相反，去掉前面的 !
+enable_pin: !gpio2
+rotation_distance: 8                                                # 适用于T8x8集成导程螺杆
+microsteps: 32
+endstop_pin: !gpio25
+#position_endstop: 118
+position_max: 117
+position_min: -2
+homing_speed: 25
+second_homing_speed: 3.0
+homing_retract_dist: 3.0
+
+[tmc2209 stepper_z]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 1
+interpolate: False
+## 对于OMC (StepperOnline) 17LS13-0404E-200G 0.4A
+run_current: 0.4
+## 对于LDO-42STH25-1004CL200E 1.0A
+#run_current: 0.37
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为999999启用stealthchop，0使用spreadcycle
+
+#####################################################################
+# 挤出机
+#####################################################################
+
+[extruder]
+step_pin: gpio14
+dir_pin: gpio13                                                     # 如果运动方向相反，添加!使其反转
+enable_pin: !gpio15
+#full_steps_per_rotation: 200                                       # LDO 1.8°步进电机设为200，OMC(StepperOnline) 0.9°步进电机设为400
+rotation_distance: 21.45003555                                          # 参考挤出机文档校准rotation_distance
+gear_ratio: 50:10                                                   # 对于Mini Afterburner
+microsteps: 32
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: gpio23
+## 检查你的热敏电阻类型。参见 https://www.klipper3d.org/Config_Reference.html#common-thermistors 了解常见类型。
+## 对于NTC 100k 3950热敏电阻，使用"Generic 3950"
+sensor_type:Generic 3950
+sensor_pin: gpio27
+#control: pid                                                        # 初始检查后进行PID校准
+#pid_Kp: 28.182
+#pid_Ki: 1.978
+#pid_Kd: 100.397
+min_temp: 0
+max_temp: 300
+min_extrude_temp: 170
+max_extrude_only_distance: 150
+max_extrude_cross_section: 0.81
+pressure_advance: 0.0                                               # 参考压力推进调整文档
+pressure_advance_smooth_time: 0.040
+
+[tmc2209 extruder]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 3
+interpolate: False
+## 对于OMC (StepperOnline) 14HR07-1004VRN 1A 0.9°
+run_current: 0.8 # 对于OMC 14HR07-1004VRN额定1A
+## 对于LDO LDO 36STH17-1004AHG 1A 1.8°
+#run_current: 0.3 # 对于LDO 36STH17-1004AHG
+## 对于LDO LDO 36STH20-1004AHG 1A 1.8°
+#run_current: 0.6 # 对于LDO 36STH20-1004AHG
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为0使用spreadcycle，避免在挤出机上使用stealthchop
+
+#####################################################################
+# 热床加热器
+#####################################################################
+
+[heater_bed]
+heater_pin: gpio21
+## 检查你的热敏电阻类型。参见 https://www.klipper3d.org/Config_Reference.html#common-thermistors 了解常见类型。
+## 对于Keenovo加热器，使用"Generic 3950"
+sensor_type:Generic 3950
+sensor_pin: gpio26
+smooth_time: 3.0
+#max_power: 0.6                                                     # 仅适用于100W加热垫
+min_temp: 0
+max_temp: 120
+#control: pid                                                        # 初始检查后进行PID校准
+#pid_kp: 68.453
+#pid_ki: 2.749
+#pid_kd: 426.122
+
+#####################################################################
+# 风扇控制
+#####################################################################
+
+### 底板风扇,如果pico的温度超过55°，就开启风扇。
+[temperature_fan board_fans]
+pin: gpio20
+kick_start_time: 0.8
+#shutdown_speed: 0
+#off_below: 0.1
+max_power: 1.0
+#fan_speed: 0.6
+sensor_type: temperature_host
+control: watermark
+min_temp: -20
+max_temp: 85
+max_delta: 5.0
+target_temp: 40
+
+[heater_fan hotend_fan]
+pin: gpio18
+max_power: 1
+kick_start_time: 0.5
+heater: extruder
+heater_temp: 50.0
+#fan_speed: 1.0                                                     # 除非你使用蓝线，否则不能PWM控制delta风扇
+
+[fan]
+pin: gpio17
+max_power: 1.0
+kick_start_time: 0.5                                                # 根据你的风扇，如果风扇无法启动，可能需要增加这个值
+off_below: 0.13
+cycle_time: 0.010
+
+#####################################################################
+# 丝材耗尽传感器
+#####################################################################
+
+#[filament_switch_sensor Filament_Runout_Sensor]
+#pause_on_runout: True
+#runout_gcode: PAUSE
+#switch_pin: gpio16
+
+#####################################################################
+# 寻道和横梁调整例程
+#####################################################################
+
+[idle_timeout]
+timeout: 1800
+
+[homing_override]
+axes: xyz
+set_position_z: 0
+gcode:
+   G90
+   G0 Z15 F600
+  {% set home_all = 'X' not in params and 'Y' not in params and 'Z' not in params %}
+
+  {% if home_all or 'X' in params %}
+    _HOME_X
+  {% endif %}
+
+  {% if home_all or 'Y' in params %}
+    _HOME_Y
+  {% endif %}
+
+  {% if home_all or 'Z' in params %}
+    _HOME_Z
+  {% endif %}
+
+#[safe_z_home]
+##home_xy_position: 120,120 										# 这些坐标值不能大于X和Y步进电机中指定的"position_max:"的值
+#speed: 50.0
+#z_hop: 5
+
+## 使用BED_SCREWS_ADJUST时
+[bed_screws]
+screw1: 60,5
+screw1_name: 前螺丝
+screw2: 5,115
+screw2_name: 左后螺丝
+screw3: 115,115
+screw3_name: 右后螺丝
+
+#####################################################################
+# 霓虹像素灯
+#####################################################################
+
+[neopixel board_rgb]
+pin: gpio24
+chain_count: 1
+color_order: GRB
+initial_RED: 0.0
+initial_GREEN: 0.1
+initial_BLUE: 0.0
+
+#####################################################################
+# V0显示屏
+#####################################################################
+
+# [mcu display]
+# serial: **将你的串行端口粘贴到这里并取消注释**
+# restart_method: command
+
+# [display]
+# lcd_type: sh1106
+# i2c_mcu: display
+# i2c_bus: i2c1a
+# # 设置编码器轮盘的方向
+# #   标准：向右（顺时针）滚动降低或增加值。向左（逆时针）滚动增加或减少值。
+# encoder_pins: ^display:PA3, ^display:PA4
+# #   反转：向右（顺时针）滚动增加或减少值。向左（逆时针）滚动降低或增加值。
+# encoder_pins: ^display:PA4, ^display:PA3
+# click_pin: ^!display:PA1
+# kill_pin: ^!display:PA5
+# #x_offset: 2
+# #   使用X偏移量将显示屏向右移动。值可以是0到3
+# #vcomh: 0
+# #   在SSD1306/SH1106显示屏上设置Vcomh值。这个值
+# #   与一些OLED显示屏上的“拖尾”效果有关。值范围从0到63。默认是0。
+# #   如果你的显示屏上出现一些垂直条纹，调整这个值。(31似乎是一个好的值)
+
+# [neopixel displayStatus]
+# pin: display:PA0
+# chain_count: 1
+# color_order: GRB
+# initial_RED: 0.2
+# initial_GREEN: 0.05
+# initial_BLUE: 0
+
+#####################################################################
+# 宏定义
+#####################################################################
+
+
+
+
+[gcode_macro PRINT_START]
+# 使用PRINT_START作为切片机的启动脚本 - 请根据你选择的切片机进行自定义
+gcode:
+    G28                            ; 归位所有轴
+    G90                            ; 绝对位置定位
+    G1 Z20 F1200                   ; 将喷嘴从床上移开
+
+[gcode_macro PRINT_END]
+# 使用PRINT_END作为切片机的结束脚本 - 请根据你选择的切片机进行自定义
+gcode:
+    M400                           ; 等待缓冲区清空
+    G92 E0                         ; 将挤出机归零
+    G1 E-4.0 F3600                 ; 回抽丝材
+    G91                            ; 相对位置定位
+
+    # 获取边界
+    {% set max_x = printer.configfile.config["stepper_x"]["position_max"]|float %}
+    {% set max_y = printer.configfile.config["stepper_y"]["position_max"]|float %}
+    {% set max_z = printer.configfile.config["stepper_z"]["position_max"]|float %}
+
+    # 检查结束位置以确定安全移动方向
+    {% if printer.toolhead.position.x < (max_x - 20) %}
+        {% set x_safe = 20.0 %}
+    {% else %}
+        {% set x_safe = -20.0 %}
+    {% endif %}
+
+    {% if printer.toolhead.position.y < (max_y - 20) %}
+        {% set y_safe = 20.0 %}
+    {% else %}
+        {% set y_safe = -20.0 %}
+    {% endif %}
+
+    {% if printer.toolhead.position.z < (max_z - 2) %}
+        {% set z_safe = 2.0 %}
+    {% else %}
+        {% set z_safe = max_z - printer.toolhead.position.z %}
+    {% endif %}
+
+    G0 Z{z_safe+10} F3600             ; 将喷嘴向上移动
+    G0 X{x_safe} Y{y_safe} F20000  ; 将喷嘴移动以去除拉丝
+    TURN_OFF_HEATERS
+    M107                           ; 关闭风扇
+    G90                            ; 绝对位置定位
+    G0 X60 Y{max_y-10} F3600      ; 将喷嘴停在后方
+
+[gcode_macro LOAD_FILAMENT]
+gcode:
+   M83                            ; 将挤出机设置为相对位置
+   G1 E30 F300                    ; 装载
+   G1 E15 F150                    ; 用丝材填充喷嘴
+   M82                            ; 将挤出机设置为绝对位置
+
+[gcode_macro UNLOAD_FILAMENT]
+gcode:
+   M83                            ; 将挤出机设置为相对位置
+   G1 E10 F300                    ; 稍微挤出以软化喷嘴尖端
+   G1 E-40 F1800                  ; 回抽一些，但不要太多，否则会卡住
+   M82                            ; 将挤出机设置为绝对位置
+
+[gcode_macro _HOME_X]
+gcode:
+    # 寻道时始终对A/B步进电机使用一致的运行电流
+    {% set RUN_CURRENT_X = printer.configfile.settings['tmc2209 stepper_x'].run_current|float %}
+    {% set RUN_CURRENT_Y = printer.configfile.settings['tmc2209 stepper_y'].run_current|float %}
+    {% set HOME_CURRENT_RATIO = 0.7 %} # 默认情况下，我们在寻道时降低了电机电流。如果你在寻道时遇到跳动问题，可以调整这个值
+    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_X}
+    SET_TMC_CURRENT STEPPER=stepper_y CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_Y}
+
+    # 归位
+    G28 X
+    # 移开
+    G91
+    G1 X-10 F1200
+
+    # 等待StallGuard寄存器清空
+    M400
+    G90
+    # 设置打印时的电流
+    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CURRENT_X}
+    SET_TMC_CURRENT STEPPER=stepper_y CURRENT={RUN_CURRENT_Y}
+
+[gcode_macro _HOME_Y]
+gcode:
+    # 设置寻道的电流
+    {% set RUN_CURRENT_X = printer.configfile.settings['tmc2209 stepper_x'].run_current|float %}
+    {% set RUN_CURRENT_Y = printer.configfile.settings['tmc2209 stepper_y'].run_current|float %}
+    {% set HOME_CURRENT_RATIO = 0.7 %} # 默认情况下，我们在寻道时降低了电机电流。如果你在寻道时遇到跳动问题，可以调整这个值
+    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_X}
+    SET_TMC_CURRENT STEPPER=stepper_y CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_Y}
+
+    # 归位
+    G28 Y
+    # 移开
+    G91
+    G1 Y-10 F1200
+
+    # 等待StallGuard寄存器清空
+    M400
+    G90
+    # 设置打印时的电流
+    SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CURRENT_X}
+    SET_TMC_CURRENT STEPPER=stepper_y CURRENT={RUN_CURRENT_Y}
+
+[gcode_macro _HOME_Z]
+gcode:
+    G90
+    G28 Z
+    G1 Z+5 F300           ; 归位Z轴后，将Z轴向上移动5mm，避免与打印平台接触
+
+[gcode_arcs]
+; 以下设置定义了G代码中圆弧的处理方式
+resolution: 1.0
+; 圆弧将被分割成线段，每个线段的长度将等于上面设置的分辨率（单位：毫米）
+; 分辨率较低的值将产生更精细的圆弧，但也会为机器带来更多工作量
+; 如果设置的分辨率值较低，圆弧的精度会更高，但同时会生成更多的G代码指令
+; 配置的分辨率值以上的圆弧将被处理为直线，以减少计算量和提高加工效率
+; 默认分辨率值为1毫米，可以根据需要进行调整
+
+[exclude_object]
+
+#*# <---------------------- SAVE_CONFIG ---------------------->
+#*# DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#*#
+#*# [extruder]
+#*# control = pid
+#*# pid_kp = 37.694
+#*# pid_ki = 14.782
+#*# pid_kd = 24.030
+#*#
+#*# [stepper_z]
+#*# position_endstop = 115.790
+#*#
+#*# [heater_bed]
+#*# control = pid
+#*# pid_kp = 61.553
+#*# pid_ki = 1.503
+#*# pid_kd = 630.148

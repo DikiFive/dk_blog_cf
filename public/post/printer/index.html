@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
+    <title> - DikiFive&#39;s Blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='/images/github-mark-white.png'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="title: &amp;ldquo;Content Placeholder&amp;rdquo; _build: render: never list: never publishResources: false 此文件包含BIGTREETECH SKR Pico V1.0的常见引脚映射 使用此配置，固件应为RP2040编译并使用USB通信。 &amp;ldquo;make flash&amp;quot;命令在SKR Pico V1.0上不起作用。取而代之的是， 运行&amp;quot;make&amp;quot;后，将生成的&amp;quot;out/klipper.uf2&amp;quot;文件复制到RP2040启动模式的存储设备 Voron Design VORON 0.2 SKR Pico V1.0配置 *** 需要更改/检查的项目 *** MCU路径[mcu]部分 Z轴和挤出机电机电流[tmc2209 stepper_*]部分。取消注释您拥有的步进电机 挤出机全步每旋转[tmc2209 stepper_*]部分。参见https://www.klipper3d.org/Config_Reference.html#common-thermistors了解常见热敏电阻类型 电机电流[extruder] [stepper]和[_HOME_X/Y]宏部分 PID调节[extruder]和[heater_bed]部分 微调E轴步数[extruder]部分 更多信息请访问https://docs.vorondesign.com/build/startup/#v0 [include fluidd.cfg]
+[virtual_sdcard] path: /home/orangepi/printer_data/gcodes on_error_gcode: CANCEL_PRINT
+[mcu] #####################################################################
+通过&amp;quot;ls -l /dev/serial/by-id/&amp;ldquo;获取定义 ##################################################################### serial: /dev/serial/by-id/usb-Klipper_rp2040_454741505B0B3A5A-if00
+serial: /dev/ttyAMA0 # 对于UART连接 restart_method: command
+[temperature_sensor mcu_temp] sensor_type: temperature_mcu min_temp: 0 max_temp: 100
+[temperature_sensor orange_pi] sensor_type: temperature_host min_temp: 10 max_temp: 100" />
+<meta name="keywords"
+  content='blog' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://localhost:1313/post/printer/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content=" - DikiFive&#39;s Blog" />
+<meta name="twitter:description"
+  content="title: &amp;ldquo;Content Placeholder&amp;rdquo; _build: render: never list: never publishResources: false 此文件包含BIGTREETECH SKR Pico V1.0的常见引脚映射 使用此配置，固件应为RP2040编译并使用USB通信。 &amp;ldquo;make flash&amp;quot;命令在SKR Pico V1.0上不起作用。取而代之的是， 运行&amp;quot;make&amp;quot;后，将生成的&amp;quot;out/klipper.uf2&amp;quot;文件复制到RP2040启动模式的存储设备 Voron Design VORON 0.2 SKR Pico V1.0配置 *** 需要更改/检查的项目 *** MCU路径[mcu]部分 Z轴和挤出机电机电流[tmc2209 stepper_*]部分。取消注释您拥有的步进电机 挤出机全步每旋转[tmc2209 stepper_*]部分。参见https://www.klipper3d.org/Config_Reference.html#common-thermistors了解常见热敏电阻类型 电机电流[extruder] [stepper]和[_HOME_X/Y]宏部分 PID调节[extruder]和[heater_bed]部分 微调E轴步数[extruder]部分 更多信息请访问https://docs.vorondesign.com/build/startup/#v0 [include fluidd.cfg]
+[virtual_sdcard] path: /home/orangepi/printer_data/gcodes on_error_gcode: CANCEL_PRINT
+[mcu] #####################################################################
+通过&amp;quot;ls -l /dev/serial/by-id/&amp;ldquo;获取定义 ##################################################################### serial: /dev/serial/by-id/usb-Klipper_rp2040_454741505B0B3A5A-if00
+serial: /dev/ttyAMA0 # 对于UART连接 restart_method: command
+[temperature_sensor mcu_temp] sensor_type: temperature_mcu min_temp: 0 max_temp: 100
+[temperature_sensor orange_pi] sensor_type: temperature_host min_temp: 10 max_temp: 100" />
+<meta name="twitter:site" content="http://localhost:1313/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="http://localhost:1313/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content=" - DikiFive&#39;s Blog">
+<meta property="og:description"
+  content="title: &amp;ldquo;Content Placeholder&amp;rdquo; _build: render: never list: never publishResources: false 此文件包含BIGTREETECH SKR Pico V1.0的常见引脚映射 使用此配置，固件应为RP2040编译并使用USB通信。 &amp;ldquo;make flash&amp;quot;命令在SKR Pico V1.0上不起作用。取而代之的是， 运行&amp;quot;make&amp;quot;后，将生成的&amp;quot;out/klipper.uf2&amp;quot;文件复制到RP2040启动模式的存储设备 Voron Design VORON 0.2 SKR Pico V1.0配置 *** 需要更改/检查的项目 *** MCU路径[mcu]部分 Z轴和挤出机电机电流[tmc2209 stepper_*]部分。取消注释您拥有的步进电机 挤出机全步每旋转[tmc2209 stepper_*]部分。参见https://www.klipper3d.org/Config_Reference.html#common-thermistors了解常见热敏电阻类型 电机电流[extruder] [stepper]和[_HOME_X/Y]宏部分 PID调节[extruder]和[heater_bed]部分 微调E轴步数[extruder]部分 更多信息请访问https://docs.vorondesign.com/build/startup/#v0 [include fluidd.cfg]
+[virtual_sdcard] path: /home/orangepi/printer_data/gcodes on_error_gcode: CANCEL_PRINT
+[mcu] #####################################################################
+通过&amp;quot;ls -l /dev/serial/by-id/&amp;ldquo;获取定义 ##################################################################### serial: /dev/serial/by-id/usb-Klipper_rp2040_454741505B0B3A5A-if00
+serial: /dev/ttyAMA0 # 对于UART连接 restart_method: command
+[temperature_sensor mcu_temp] sensor_type: temperature_mcu min_temp: 0 max_temp: 100
+[temperature_sensor orange_pi] sensor_type: temperature_host min_temp: 10 max_temp: 100" />
+<meta property="og:url" content="http://localhost:1313/post/printer/" />
+<meta property="og:site_name" content="" />
+<meta property="og:image"
+  content="http://localhost:1313/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="http://localhost:1313/">
+        <img class="octicon" height="32" width="32" src="/images/hat.png">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="http://localhost:1313/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="/images/hat.png">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
+                  <img class=" avatar-user"
+                    src="/images/head.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="http://localhost:1313/">DikiFive</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="http://localhost:1313/post/printer/"></a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                    class="no-wrap">
+                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+
+                  
+                  <span class="file-info-divider"></span>
+                  Modified <relative-time datetime="Wed, 17 Jul 2024 12:36:47 &#43;0800"
+                    class="no-wrap">
+                    Wed, 17 Jul 2024 12:36:47 &#43;0800</relative-time>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      3416 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h2 id="publishresources-false">title: &ldquo;Content Placeholder&rdquo;
+_build:
+render: never
+list: never
+publishResources: false</h2>
+<h1 id="此文件包含bigtreetech-skr-pico-v10的常见引脚映射">此文件包含BIGTREETECH SKR Pico V1.0的常见引脚映射</h1>
+<h1 id="使用此配置固件应为rp2040编译并使用usb通信">使用此配置，固件应为RP2040编译并使用USB通信。</h1>
+<h1 id="make-flash命令在skr-pico-v10上不起作用取而代之的是">&ldquo;make flash&quot;命令在SKR Pico V1.0上不起作用。取而代之的是，</h1>
+<h1 id="运行make后将生成的outklipperuf2文件复制到rp2040启动模式的存储设备">运行&quot;make&quot;后，将生成的&quot;out/klipper.uf2&quot;文件复制到RP2040启动模式的存储设备</h1>
+<h2 id="voron-design-voron-02-skr-pico-v10配置">Voron Design VORON 0.2 SKR Pico V1.0配置</h2>
+<h2 id="-需要更改检查的项目-">*** 需要更改/检查的项目 ***</h2>
+<h2 id="mcu路径mcu部分">MCU路径[mcu]部分</h2>
+<h2 id="z轴和挤出机电机电流tmc2209-stepper_部分取消注释您拥有的步进电机">Z轴和挤出机电机电流[tmc2209 stepper_*]部分。取消注释您拥有的步进电机</h2>
+<h2 id="挤出机全步每旋转tmc2209-stepper_部分参见httpswwwklipper3dorgconfig_referencehtmlcommon-thermistors了解常见热敏电阻类型">挤出机全步每旋转[tmc2209 stepper_*]部分。参见https://www.klipper3d.org/Config_Reference.html#common-thermistors了解常见热敏电阻类型</h2>
+<h2 id="电机电流extruder-stepper和_home_xy宏部分">电机电流[extruder] [stepper]和[_HOME_X/Y]宏部分</h2>
+<h2 id="pid调节extruder和heater_bed部分">PID调节[extruder]和[heater_bed]部分</h2>
+<h2 id="微调e轴步数extruder部分">微调E轴步数[extruder]部分</h2>
+<h2 id="更多信息请访问httpsdocsvorondesigncombuildstartupv0">更多信息请访问https://docs.vorondesign.com/build/startup/#v0</h2>
+<p>[include fluidd.cfg]</p>
+<p>[virtual_sdcard]
+path: /home/orangepi/printer_data/gcodes
+on_error_gcode: CANCEL_PRINT</p>
+<p>[mcu]
+#####################################################################</p>
+<h1 id="通过ls--l-devserialby-id获取定义">通过&quot;ls -l /dev/serial/by-id/&ldquo;获取定义</h1>
+<p>#####################################################################
+serial: /dev/serial/by-id/usb-Klipper_rp2040_454741505B0B3A5A-if00</p>
+<h2 id="serial-devttyama0--对于uart连接">serial: /dev/ttyAMA0 											# 对于UART连接</h2>
+<p>restart_method: command</p>
+<p>[temperature_sensor mcu_temp]
+sensor_type: temperature_mcu
+min_temp: 0
+max_temp: 100</p>
+<p>[temperature_sensor orange_pi]
+sensor_type: temperature_host
+min_temp: 10
+max_temp: 100</p>
+<p>[printer]
+kinematics: corexy
+max_velocity: 300
+max_accel: 10000
+max_z_velocity: 30
+max_z_accel: 300
+square_corner_velocity: 6.0</p>
+<p>#####################################################################</p>
+<h1 id="xy轴步进电机设置">X/Y轴步进电机设置</h1>
+<p>#####################################################################</p>
+<p>[stepper_x]
+step_pin: gpio11</p>
+<h2 id="参见httpsdocsvorondesigncombuildstartupv0">参见https://docs.vorondesign.com/build/startup/#v0</h2>
+<p>dir_pin: !gpio10                                                     # 在上面的链接中检查电机方向。如果反转，在gpio10前加!
+enable_pin: !gpio12
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200                                        # 对于0.9°步进电机设置为400，对于1.8°步进电机设置为200
+endstop_pin: tmc2209_stepper_x:virtual_endstop
+position_endstop: 120
+position_max: 120
+homing_speed: 40                                                    # 对于无传感器寻道，建议不要超过40mm/s
+homing_retract_dist: 0
+homing_positive_dir: true</p>
+<p>[tmc2209 stepper_x]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 0
+interpolate: False
+run_current: 0.8</p>
+<h1 id="你需要使用公式额定电机电流--0707--最大运行电流来计算运行电流值从最大值的60-70开始">你需要使用公式(额定电机电流 * 0.707 = 最大运行电流)来计算运行电流值，从最大值的60%-70%开始。</h1>
+<p>sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设置为999999以启用stealthchop，设置为0以使用spreadcycle
+diag_pin: ^gpio4    												# 你需要在你的主板上跳接此DIAG PIN，以便无传感器寻道工作
+driver_SGTHRS: 95												# 这被设置为255，这是无传感器寻道的最大灵敏度，你将需要稍后调整此值</p>
+<p>[stepper_y]
+step_pin: gpio6</p>
+<h2 id="参见-httpsdocsvorondesigncombuildstartupv0">参见 <a href="https://docs.vorondesign.com/build/startup/#v0">https://docs.vorondesign.com/build/startup/#v0</a></h2>
+<p>dir_pin: !gpio5                                                      # 检查电机方向，如果反转，在gpio5前加 !
+enable_pin: !gpio7
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200                                        # 设置为400用于0.9°步进电机，200用于1.8°步进电机
+endstop_pin: tmc2209_stepper_y:virtual_endstop
+position_endstop: 118
+position_max: 118
+homing_speed: 40                                                    # 无传感器寻道推荐速度不超过40mm/s
+homing_retract_dist: 0
+homing_positive_dir: true</p>
+<p>[tmc2209 stepper_y]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 2
+interpolate: False
+run_current: 0.8</p>
+<h1 id="使用公式-额定电机电流--0707--最大运行电流-计算运行电流值从最大值的60-70开始">使用公式 (额定电机电流 * 0.707 = 最大运行电流) 计算运行电流值，从最大值的60%-70%开始。</h1>
+<p>sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为999999启用stealthchop，0使用spreadcycle
+diag_pin: ^gpio3    												# 需要在主板上跳接此DIAG PIN以启用无传感器寻道
+driver_SGTHRS: 105												# 设为255，无传感器寻道的最大灵敏度，之后需调整</p>
+<p>#####################################################################</p>
+<h1 id="z轴步进电机设置">Z轴步进电机设置</h1>
+<p>#####################################################################</p>
+<p>[stepper_z]
+step_pin: gpio19
+dir_pin: !gpio28                                                    # 如果电机方向相反，去掉前面的 !
+enable_pin: !gpio2
+rotation_distance: 8                                                # 适用于T8x8集成导程螺杆
+microsteps: 32
+endstop_pin: !gpio25
+#position_endstop: 118
+position_max: 117
+position_min: -2
+homing_speed: 25
+second_homing_speed: 3.0
+homing_retract_dist: 3.0</p>
+<p>[tmc2209 stepper_z]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 1
+interpolate: False</p>
+<h2 id="对于omc-stepperonline-17ls13-0404e-200g-04a">对于OMC (StepperOnline) 17LS13-0404E-200G 0.4A</h2>
+<p>run_current: 0.4</p>
+<h2 id="对于ldo-42sth25-1004cl200e-10a">对于LDO-42STH25-1004CL200E 1.0A</h2>
+<p>#run_current: 0.37
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为999999启用stealthchop，0使用spreadcycle</p>
+<p>#####################################################################</p>
+<h1 id="挤出机">挤出机</h1>
+<p>#####################################################################</p>
+<p>[extruder]
+step_pin: gpio14
+dir_pin: gpio13                                                     # 如果运动方向相反，添加!使其反转
+enable_pin: !gpio15
+#full_steps_per_rotation: 200                                       # LDO 1.8°步进电机设为200，OMC(StepperOnline) 0.9°步进电机设为400
+rotation_distance: 21.45003555                                          # 参考挤出机文档校准rotation_distance
+gear_ratio: 50:10                                                   # 对于Mini Afterburner
+microsteps: 32
+nozzle_diameter: 0.400
+filament_diameter: 1.750
+heater_pin: gpio23</p>
+<h2 id="检查你的热敏电阻类型参见-httpswwwklipper3dorgconfig_referencehtmlcommon-thermistors-了解常见类型">检查你的热敏电阻类型。参见 <a href="https://www.klipper3d.org/Config_Reference.html#common-thermistors">https://www.klipper3d.org/Config_Reference.html#common-thermistors</a> 了解常见类型。</h2>
+<h2 id="对于ntc-100k-3950热敏电阻使用generic-3950">对于NTC 100k 3950热敏电阻，使用&quot;Generic 3950&rdquo;</h2>
+<p>sensor_type:Generic 3950
+sensor_pin: gpio27
+#control: pid                                                        # 初始检查后进行PID校准
+#pid_Kp: 28.182
+#pid_Ki: 1.978
+#pid_Kd: 100.397
+min_temp: 0
+max_temp: 300
+min_extrude_temp: 170
+max_extrude_only_distance: 150
+max_extrude_cross_section: 0.81
+pressure_advance: 0.0                                               # 参考压力推进调整文档
+pressure_advance_smooth_time: 0.040</p>
+<p>[tmc2209 extruder]
+uart_pin: gpio9
+tx_pin: gpio8
+uart_address: 3
+interpolate: False</p>
+<h2 id="对于omc-stepperonline-14hr07-1004vrn-1a-09">对于OMC (StepperOnline) 14HR07-1004VRN 1A 0.9°</h2>
+<p>run_current: 0.8 # 对于OMC 14HR07-1004VRN额定1A</p>
+<h2 id="对于ldo-ldo-36sth17-1004ahg-1a-18">对于LDO LDO 36STH17-1004AHG 1A 1.8°</h2>
+<p>#run_current: 0.3 # 对于LDO 36STH17-1004AHG</p>
+<h2 id="对于ldo-ldo-36sth20-1004ahg-1a-18">对于LDO LDO 36STH20-1004AHG 1A 1.8°</h2>
+<p>#run_current: 0.6 # 对于LDO 36STH20-1004AHG
+sense_resistor: 0.110
+stealthchop_threshold: 0                                            # 设为0使用spreadcycle，避免在挤出机上使用stealthchop</p>
+<p>#####################################################################</p>
+<h1 id="热床加热器">热床加热器</h1>
+<p>#####################################################################</p>
+<p>[heater_bed]
+heater_pin: gpio21</p>
+<h2 id="检查你的热敏电阻类型参见-httpswwwklipper3dorgconfig_referencehtmlcommon-thermistors-了解常见类型-1">检查你的热敏电阻类型。参见 <a href="https://www.klipper3d.org/Config_Reference.html#common-thermistors">https://www.klipper3d.org/Config_Reference.html#common-thermistors</a> 了解常见类型。</h2>
+<h2 id="对于keenovo加热器使用generic-3950">对于Keenovo加热器，使用&quot;Generic 3950&rdquo;</h2>
+<p>sensor_type:Generic 3950
+sensor_pin: gpio26
+smooth_time: 3.0
+#max_power: 0.6                                                     # 仅适用于100W加热垫
+min_temp: 0
+max_temp: 120
+#control: pid                                                        # 初始检查后进行PID校准
+#pid_kp: 68.453
+#pid_ki: 2.749
+#pid_kd: 426.122</p>
+<p>#####################################################################</p>
+<h1 id="风扇控制">风扇控制</h1>
+<p>#####################################################################</p>
+<h3 id="底板风扇如果pico的温度超过55就开启风扇">底板风扇,如果pico的温度超过55°，就开启风扇。</h3>
+<p>[temperature_fan board_fans]
+pin: gpio20
+kick_start_time: 0.8
+#shutdown_speed: 0
+#off_below: 0.1
+max_power: 1.0
+#fan_speed: 0.6
+sensor_type: temperature_host
+control: watermark
+min_temp: -20
+max_temp: 85
+max_delta: 5.0
+target_temp: 40</p>
+<p>[heater_fan hotend_fan]
+pin: gpio18
+max_power: 1
+kick_start_time: 0.5
+heater: extruder
+heater_temp: 50.0
+#fan_speed: 1.0                                                     # 除非你使用蓝线，否则不能PWM控制delta风扇</p>
+<p>[fan]
+pin: gpio17
+max_power: 1.0
+kick_start_time: 0.5                                                # 根据你的风扇，如果风扇无法启动，可能需要增加这个值
+off_below: 0.13
+cycle_time: 0.010</p>
+<p>#####################################################################</p>
+<h1 id="丝材耗尽传感器">丝材耗尽传感器</h1>
+<p>#####################################################################</p>
+<p>#[filament_switch_sensor Filament_Runout_Sensor]
+#pause_on_runout: True
+#runout_gcode: PAUSE
+#switch_pin: gpio16</p>
+<p>#####################################################################</p>
+<h1 id="寻道和横梁调整例程">寻道和横梁调整例程</h1>
+<p>#####################################################################</p>
+<p>[idle_timeout]
+timeout: 1800</p>
+<p>[homing_override]
+axes: xyz
+set_position_z: 0
+gcode:
+G90
+G0 Z15 F600
+{% set home_all = &lsquo;X&rsquo; not in params and &lsquo;Y&rsquo; not in params and &lsquo;Z&rsquo; not in params %}</p>
+<p>{% if home_all or &lsquo;X&rsquo; in params %}
+_HOME_X
+{% endif %}</p>
+<p>{% if home_all or &lsquo;Y&rsquo; in params %}
+_HOME_Y
+{% endif %}</p>
+<p>{% if home_all or &lsquo;Z&rsquo; in params %}
+_HOME_Z
+{% endif %}</p>
+<p>#[safe_z_home]
+##home_xy_position: 120,120 										# 这些坐标值不能大于X和Y步进电机中指定的&quot;position_max:&ldquo;的值
+#speed: 50.0
+#z_hop: 5</p>
+<h2 id="使用bed_screws_adjust时">使用BED_SCREWS_ADJUST时</h2>
+<p>[bed_screws]
+screw1: 60,5
+screw1_name: 前螺丝
+screw2: 5,115
+screw2_name: 左后螺丝
+screw3: 115,115
+screw3_name: 右后螺丝</p>
+<p>#####################################################################</p>
+<h1 id="霓虹像素灯">霓虹像素灯</h1>
+<p>#####################################################################</p>
+<p>[neopixel board_rgb]
+pin: gpio24
+chain_count: 1
+color_order: GRB
+initial_RED: 0.0
+initial_GREEN: 0.1
+initial_BLUE: 0.0</p>
+<p>#####################################################################</p>
+<h1 id="v0显示屏">V0显示屏</h1>
+<p>#####################################################################</p>
+<h1 id="mcu-display">[mcu display]</h1>
+<h1 id="serial-将你的串行端口粘贴到这里并取消注释">serial: <strong>将你的串行端口粘贴到这里并取消注释</strong></h1>
+<h1 id="restart_method-command">restart_method: command</h1>
+<h1 id="display">[display]</h1>
+<h1 id="lcd_type-sh1106">lcd_type: sh1106</h1>
+<h1 id="i2c_mcu-display">i2c_mcu: display</h1>
+<h1 id="i2c_bus-i2c1a">i2c_bus: i2c1a</h1>
+<h1 id="-设置编码器轮盘的方向"># 设置编码器轮盘的方向</h1>
+<h1 id="---标准向右顺时针滚动降低或增加值向左逆时针滚动增加或减少值">#   标准：向右（顺时针）滚动降低或增加值。向左（逆时针）滚动增加或减少值。</h1>
+<h1 id="encoder_pins-displaypa3-displaypa4">encoder_pins: ^display:PA3, ^display:PA4</h1>
+<h1 id="---反转向右顺时针滚动增加或减少值向左逆时针滚动降低或增加值">#   反转：向右（顺时针）滚动增加或减少值。向左（逆时针）滚动降低或增加值。</h1>
+<h1 id="encoder_pins-displaypa4-displaypa3">encoder_pins: ^display:PA4, ^display:PA3</h1>
+<h1 id="click_pin-displaypa1">click_pin: ^!display:PA1</h1>
+<h1 id="kill_pin-displaypa5">kill_pin: ^!display:PA5</h1>
+<h1 id="x_offset-2">#x_offset: 2</h1>
+<h1 id="---使用x偏移量将显示屏向右移动值可以是0到3">#   使用X偏移量将显示屏向右移动。值可以是0到3</h1>
+<h1 id="vcomh-0">#vcomh: 0</h1>
+<h1 id="---在ssd1306sh1106显示屏上设置vcomh值这个值">#   在SSD1306/SH1106显示屏上设置Vcomh值。这个值</h1>
+<h1 id="---与一些oled显示屏上的拖尾效果有关值范围从0到63默认是0">#   与一些OLED显示屏上的“拖尾”效果有关。值范围从0到63。默认是0。</h1>
+<h1 id="---如果你的显示屏上出现一些垂直条纹调整这个值31似乎是一个好的值">#   如果你的显示屏上出现一些垂直条纹，调整这个值。(31似乎是一个好的值)</h1>
+<h1 id="neopixel-displaystatus">[neopixel displayStatus]</h1>
+<h1 id="pin-displaypa0">pin: display:PA0</h1>
+<h1 id="chain_count-1">chain_count: 1</h1>
+<h1 id="color_order-grb">color_order: GRB</h1>
+<h1 id="initial_red-02">initial_RED: 0.2</h1>
+<h1 id="initial_green-005">initial_GREEN: 0.05</h1>
+<h1 id="initial_blue-0">initial_BLUE: 0</h1>
+<p>#####################################################################</p>
+<h1 id="宏定义">宏定义</h1>
+<p>#####################################################################</p>
+<p>[gcode_macro PRINT_START]</p>
+<h1 id="使用print_start作为切片机的启动脚本---请根据你选择的切片机进行自定义">使用PRINT_START作为切片机的启动脚本 - 请根据你选择的切片机进行自定义</h1>
+<p>gcode:
+G28                            ; 归位所有轴
+G90                            ; 绝对位置定位
+G1 Z20 F1200                   ; 将喷嘴从床上移开</p>
+<p>[gcode_macro PRINT_END]</p>
+<h1 id="使用print_end作为切片机的结束脚本---请根据你选择的切片机进行自定义">使用PRINT_END作为切片机的结束脚本 - 请根据你选择的切片机进行自定义</h1>
+<p>gcode:
+M400                           ; 等待缓冲区清空
+G92 E0                         ; 将挤出机归零
+G1 E-4.0 F3600                 ; 回抽丝材
+G91                            ; 相对位置定位</p>
+<pre><code># 获取边界
+{% set max_x = printer.configfile.config[&quot;stepper_x&quot;][&quot;position_max&quot;]|float %}
+{% set max_y = printer.configfile.config[&quot;stepper_y&quot;][&quot;position_max&quot;]|float %}
+{% set max_z = printer.configfile.config[&quot;stepper_z&quot;][&quot;position_max&quot;]|float %}
+
+# 检查结束位置以确定安全移动方向
+{% if printer.toolhead.position.x &lt; (max_x - 20) %}
+    {% set x_safe = 20.0 %}
+{% else %}
+    {% set x_safe = -20.0 %}
+{% endif %}
+
+{% if printer.toolhead.position.y &lt; (max_y - 20) %}
+    {% set y_safe = 20.0 %}
+{% else %}
+    {% set y_safe = -20.0 %}
+{% endif %}
+
+{% if printer.toolhead.position.z &lt; (max_z - 2) %}
+    {% set z_safe = 2.0 %}
+{% else %}
+    {% set z_safe = max_z - printer.toolhead.position.z %}
+{% endif %}
+
+G0 Z{z_safe+10} F3600             ; 将喷嘴向上移动
+G0 X{x_safe} Y{y_safe} F20000  ; 将喷嘴移动以去除拉丝
+TURN_OFF_HEATERS
+M107                           ; 关闭风扇
+G90                            ; 绝对位置定位
+G0 X60 Y{max_y-10} F3600      ; 将喷嘴停在后方
+</code></pre>
+<p>[gcode_macro LOAD_FILAMENT]
+gcode:
+M83                            ; 将挤出机设置为相对位置
+G1 E30 F300                    ; 装载
+G1 E15 F150                    ; 用丝材填充喷嘴
+M82                            ; 将挤出机设置为绝对位置</p>
+<p>[gcode_macro UNLOAD_FILAMENT]
+gcode:
+M83                            ; 将挤出机设置为相对位置
+G1 E10 F300                    ; 稍微挤出以软化喷嘴尖端
+G1 E-40 F1800                  ; 回抽一些，但不要太多，否则会卡住
+M82                            ; 将挤出机设置为绝对位置</p>
+<p>[gcode_macro _HOME_X]
+gcode:
+# 寻道时始终对A/B步进电机使用一致的运行电流
+{% set RUN_CURRENT_X = printer.configfile.settings[&rsquo;tmc2209 stepper_x&rsquo;].run_current|float %}
+{% set RUN_CURRENT_Y = printer.configfile.settings[&rsquo;tmc2209 stepper_y&rsquo;].run_current|float %}
+{% set HOME_CURRENT_RATIO = 0.7 %} # 默认情况下，我们在寻道时降低了电机电流。如果你在寻道时遇到跳动问题，可以调整这个值
+SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_X}
+SET_TMC_CURRENT STEPPER=stepper_y CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_Y}</p>
+<pre><code># 归位
+G28 X
+# 移开
+G91
+G1 X-10 F1200
+
+# 等待StallGuard寄存器清空
+M400
+G90
+# 设置打印时的电流
+SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CURRENT_X}
+SET_TMC_CURRENT STEPPER=stepper_y CURRENT={RUN_CURRENT_Y}
+</code></pre>
+<p>[gcode_macro _HOME_Y]
+gcode:
+# 设置寻道的电流
+{% set RUN_CURRENT_X = printer.configfile.settings[&rsquo;tmc2209 stepper_x&rsquo;].run_current|float %}
+{% set RUN_CURRENT_Y = printer.configfile.settings[&rsquo;tmc2209 stepper_y&rsquo;].run_current|float %}
+{% set HOME_CURRENT_RATIO = 0.7 %} # 默认情况下，我们在寻道时降低了电机电流。如果你在寻道时遇到跳动问题，可以调整这个值
+SET_TMC_CURRENT STEPPER=stepper_x CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_X}
+SET_TMC_CURRENT STEPPER=stepper_y CURRENT={HOME_CURRENT_RATIO * RUN_CURRENT_Y}</p>
+<pre><code># 归位
+G28 Y
+# 移开
+G91
+G1 Y-10 F1200
+
+# 等待StallGuard寄存器清空
+M400
+G90
+# 设置打印时的电流
+SET_TMC_CURRENT STEPPER=stepper_x CURRENT={RUN_CURRENT_X}
+SET_TMC_CURRENT STEPPER=stepper_y CURRENT={RUN_CURRENT_Y}
+</code></pre>
+<p>[gcode_macro _HOME_Z]
+gcode:
+G90
+G28 Z
+G1 Z+5 F300           ; 归位Z轴后，将Z轴向上移动5mm，避免与打印平台接触</p>
+<p>[gcode_arcs]
+; 以下设置定义了G代码中圆弧的处理方式
+resolution: 1.0
+; 圆弧将被分割成线段，每个线段的长度将等于上面设置的分辨率（单位：毫米）
+; 分辨率较低的值将产生更精细的圆弧，但也会为机器带来更多工作量
+; 如果设置的分辨率值较低，圆弧的精度会更高，但同时会生成更多的G代码指令
+; 配置的分辨率值以上的圆弧将被处理为直线，以减少计算量和提高加工效率
+; 默认分辨率值为1毫米，可以根据需要进行调整</p>
+<p>[exclude_object]</p>
+<p>#<em># &lt;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- SAVE_CONFIG &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-&gt;
+#</em># DO NOT EDIT THIS BLOCK OR BELOW. The contents are auto-generated.
+#<em>#
+#</em># [extruder]
+#<em># control = pid
+#</em># pid_kp = 37.694
+#<em># pid_ki = 14.782
+#</em># pid_kd = 24.030
+#<em>#
+#</em># [stepper_z]
+#<em># position_endstop = 115.790
+#</em>#
+#<em># [heater_bed]
+#</em># control = pid
+#<em># pid_kp = 61.553
+#</em># pid_ki = 1.503
+#*# pid_kd = 630.148</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
+<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
+
+
+<div id="gitalk-container" class="gitalk-container"></div>
+<link rel="stylesheet" href='http://localhost:1313/css/gitalk.css'>
+<script src='http://localhost:1313/js/gitalk.min.js'></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'Ov23lioaIJ1jJW6NehLN',
+    clientSecret: 'ff4d5a7e63345dcce5208f051d5b52933bc87355',
+    repo: 'DikiFive.github.io',
+    owner: 'DikiFive',
+    admin: ['DikiFive'],
+    id: eval("location.pathname"), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+
+
+
+
+
+</html>

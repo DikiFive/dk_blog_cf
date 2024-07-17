@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://dikifive.github.io/</loc>
+    <loc>http://localhost:1313/post/%E8%A3%85%E6%9C%BA/</loc>
+    <lastmod>2024-07-17T12:38:50+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-07-17T12:38:50+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-07-17T12:38:50+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/hugo/</loc>
     <lastmod>2024-07-12T11:40:36+08:00</lastmod>
   </url><url>
-    <loc>https://dikifive.github.io/post/</loc>
-    <lastmod>2024-07-12T11:40:36+08:00</lastmod>
-  </url><url>
-    <loc>https://dikifive.github.io/post/hugo/</loc>
-    <lastmod>2024-07-12T11:40:36+08:00</lastmod>
-  </url><url>
-    <loc>https://dikifive.github.io/readme/</loc>
+    <loc>http://localhost:1313/readme/</loc>
     <lastmod>2024-07-11T21:39:37+08:00</lastmod>
   </url><url>
-    <loc>https://dikifive.github.io/categories/</loc>
+    <loc>http://localhost:1313/post/printer/</loc>
+    <lastmod>2024-07-17T12:36:47+08:00</lastmod>
   </url><url>
-    <loc>https://dikifive.github.io/tags/</loc>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>
