@@ -5,5 +5,5 @@ author = "DikiFive"
 keywords = ["hugo", "github", "blog"]
 cover = ""
 summary = "部署教程"
-draft = false
+draft = true
 +++
