@@ -49,6 +49,9 @@ draft = false
 
 ## 8. 访问终端
 - 当 KlipperScreen 启动后，使用 `Ctrl+Alt+F3` 进入终端。
+- 默认账户pi 密码为raspberry
+- root账户尚未设置，设置密码后可以使用
+- 输入指令sudo passwd root设置下密码再用su root后输入自己设置的密码就行了
 
 ## 9. 查找 MCU 链接
 - 在终端中运行 `ls /dev/serial/by-id/` 来查找 MCU 链接，此信息将用于 `printer.cfg` 文件中的 `[mcu]` 部分。
