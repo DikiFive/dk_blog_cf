@@ -1,5 +1,5 @@
 # 基础URL，用于生成页面链接，设置为您网站的URL
-baseURL = "https://dikifive.github.io"
+baseURL = "https://dk-blog-cf.pages.dev"
 
 # 使用的主题名称
 theme = 'github-style'
@@ -76,9 +76,9 @@ distractionFreeMode = false
 
 [[params.links]]
 # 友情链接的标题
-title = "备用博客"
+title = "主站博客"
 # 友情链接的URL
-href = "https://dk-blog-cf.pages.dev/"
+href = "https://dikifive.github.io/"
 
 [frontmatter]
 # frontmatter中可以指定文章最后修改时间的来源
