@@ -2,10 +2,10 @@
 title = "如何在VScode上使用EIDE插件来开发STM32单片机"
 date = 2025-05-29T12:37:16+08:00
 author = "DikiFive"
-keywords = [""教程, 嵌入式""]
+keywords = ["教程", "嵌入式"]
 cover = ""
 summary = ""
-draft=false
+draft = false
 +++
 
 # 如何在VScode上使用EIDE插件来开发STM32单片机
